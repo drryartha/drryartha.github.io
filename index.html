@@ -133,16 +133,30 @@
         color-mix(in srgb, var(--soft) 85%, transparent);
       border:1px solid color-mix(in srgb, var(--line) 70%, transparent);
     }
+.avatar{
+  width:72px;
+  height:72px;
+  border-radius:20px;
 
-    .avatar{
-      width:72px;height:72px;border-radius:20px;
-      background: linear-gradient(135deg, rgba(122,167,255,.65), rgba(111,224,192,.55));
-      border:1px solid color-mix(in srgb, var(--line) 55%, transparent);
-      display:flex;align-items:center;justify-content:center;
-      font-weight:800; letter-spacing:.5px;
-      color: color-mix(in srgb, var(--text) 92%, #ffffff);
-      box-shadow: 0 14px 35px rgba(0,0,0,.18);
-    }
+  /* Calm gradient avatar */
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+
+  border:1px solid color-mix(in srgb, var(--line) 55%, transparent);
+  box-shadow: 0 14px 35px rgba(0,0,0,.18);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:#ffffff;
+
+  user-select:none;
+}
+
     .profile-top{display:flex; align-items:center; gap:14px}
     .profile-top h3{margin:0; font-size:16px}
     .profile-top p{margin:2px 0 0; color:var(--muted); font-size:13px}
@@ -218,7 +232,6 @@
         <div class="logo" aria-hidden="true"></div>
         <div>
           <strong id="navName">DERRY ARTHA KHARISMA</strong><br/>
-          <span>minimal · calm · elegan</span>
         </div>
       </div>
 
@@ -239,7 +252,7 @@
         <span class="kicker">👋 Halo, saya <b id="heroName" style="color:var(--text)">Derry</b></span>
         <h1>Build project yang rapi,<br/>mulai dari ide sampai jadi.</h1>
         <p class="lead">
-          Saya <b>DERRY ARTHA KHARISMA</b> (panggilan <b>Derry/Artha</b>).
+          Saya <b>DERRY ARTHA KHARISMA</b> panggilan <b>Derry/Artha</b>.
           Fokus: <b>Deep Learning</b>, <b>IoT</b>, dan <b>Web App</b>.
           Saya suka membuat sistem end-to-end: perancangan, implementasi, evaluasi, sampai dokumentasi.
         </p>
@@ -268,7 +281,6 @@
           </div>
 
           <div class="pillrow">
-            <span class="pill">⚡ Cepat & ringan</span>
             <span class="pill">📱 Responsive</span>
             <span class="pill">🌓 Dark/Light</span>
           </div>
