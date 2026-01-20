@@ -1,237 +1,537 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DERRY ARTHA KHARISMA | Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DERRY ARTHA KHARISMA | Web Profile</title>
+  <meta name="description" content="Web profile DERRY ARTHA KHARISMA (Derry/Artha) — Deep Learning, IoT, dan Web App." />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <style>
+    :root{
+      /* Calm palette */
+      --bg:#0b1220;
+      --card:#0f1a2e;
+      --soft:#121f36;
+      --text:#eaf1ff;
+      --muted:#b6c3e6;
+      --line:#223457;
+      --accent:#7aa7ff;   /* calm blue */
+      --accent2:#6fe0c0;  /* calm sage/teal */
+      --shadow: 0 18px 55px rgba(0,0,0,.38);
+      --radius: 18px;
+      --max: 1080px;
+    }
+    :root.light{
+      --bg:#f5f7ff;
+      --card:#ffffff;
+      --soft:#f3f6ff;
+      --text:#0f1a2e;
+      --muted:#4b5c86;
+      --line:#dbe5ff;
+      --accent:#2f6bff;
+      --accent2:#17b98c;
+      --shadow: 0 18px 45px rgba(15,26,46,.10);
+    }
 
-    <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 18% 6%, rgba(122,167,255,.18), transparent 55%),
+        radial-gradient(900px 520px at 85% 24%, rgba(111,224,192,.14), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent 25%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 78px}
+    .nav{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      border-bottom:1px solid color-mix(in srgb, var(--line) 70%, transparent);
+    }
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;min-width:220px}
+    .logo{
+      width:34px;height:34px;border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 12px 30px rgba(122,167,255,.22);
+    }
+    .brand strong{font-size:13px; letter-spacing:.25px}
+    .brand span{font-size:12px;color:var(--muted)}
+    .links{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .links a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:12px;
+    }
+    .links a:hover{background: color-mix(in srgb, var(--card) 55%, transparent); color:var(--text)}
+    .btn{
+      border:1px solid color-mix(in srgb, var(--line) 80%, transparent);
+      background: color-mix(in srgb, var(--card) 72%, transparent);
+      color:var(--text);
+      padding:10px 12px; border-radius:14px;
+      display:inline-flex; gap:10px; align-items:center;
+      box-shadow: 0 10px 28px rgba(0,0,0,.10);
+      cursor:pointer;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .primary{
+      border:none;
+      background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent2) 58%, var(--accent)));
+    }
+    .primary:hover{filter:brightness(1.04)}
+    .card{
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      border:1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" />
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      margin-top:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){ .hero{grid-template-columns:1fr} }
 
-    <!-- Core CSS -->
-    <link href="css/styles.css" rel="stylesheet" />
+    .kicker{
+      display:inline-flex; gap:8px; align-items:center;
+      font-size:12px; color:var(--muted);
+      padding:6px 10px; border-radius:999px;
+      border:1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      background: color-mix(in srgb, var(--soft) 75%, transparent);
+    }
+    h1{margin:12px 0 10px; font-size:40px; line-height:1.1}
+    @media (max-width:520px){ h1{font-size:32px} }
+
+    .lead{color:var(--muted); font-size:15px; margin:0 0 14px}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+
+    .mini{display:grid; gap:12px}
+    .profilebox{
+      border-radius: var(--radius);
+      padding:18px;
+      background:
+        radial-gradient(520px 250px at 30% 18%, rgba(122,167,255,.22), transparent 60%),
+        radial-gradient(520px 250px at 70% 70%, rgba(111,224,192,.16), transparent 60%),
+        color-mix(in srgb, var(--soft) 85%, transparent);
+      border:1px solid color-mix(in srgb, var(--line) 70%, transparent);
+    }
+
+    .avatar{
+      width:72px;height:72px;border-radius:20px;
+      background: linear-gradient(135deg, rgba(122,167,255,.65), rgba(111,224,192,.55));
+      border:1px solid color-mix(in srgb, var(--line) 55%, transparent);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:800; letter-spacing:.5px;
+      color: color-mix(in srgb, var(--text) 92%, #ffffff);
+      box-shadow: 0 14px 35px rgba(0,0,0,.18);
+    }
+    .profile-top{display:flex; align-items:center; gap:14px}
+    .profile-top h3{margin:0; font-size:16px}
+    .profile-top p{margin:2px 0 0; color:var(--muted); font-size:13px}
+
+    .pillrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      background: color-mix(in srgb, var(--soft) 70%, transparent);
+      color:var(--muted); font-size:12px;
+    }
+    .pill.copy{cursor:pointer}
+    .pill.copy:hover{color:var(--text)}
+
+    section{margin-top:18px}
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between; gap:10px;
+      margin: 14px 2px 10px;
+    }
+    .section-title h2{margin:0; font-size:16px}
+    .section-title p{margin:0; color:var(--muted); font-size:12px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+
+    .item h3{margin:0 0 6px; font-size:15px}
+    .item p{margin:0 0 10px; color:var(--muted); font-size:13px}
+    .tags{display:flex; gap:8px; flex-wrap:wrap}
+    .tag{
+      font-size:12px; color:var(--muted);
+      padding:6px 10px; border-radius:999px;
+      border:1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      background: color-mix(in srgb, var(--soft) 60%, transparent);
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:920px){ .row{grid-template-columns:1fr} }
+
+    .input, textarea{
+      width:100%;
+      background: color-mix(in srgb, var(--soft) 72%, transparent);
+      border:1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      border-radius: 14px;
+      padding:12px 12px;
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    textarea{min-height:110px; resize:vertical}
+
+    .footer{
+      margin-top:22px;
+      color:var(--muted);
+      font-size:12px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+  </style>
 </head>
 
-<body id="page-top">
-
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="#page-top">DERRY ARTHA KHARISMA</a>
-        <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
-                type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
-            Menu <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link px-lg-3" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3" href="#contact">Contact</a></li>
-            </ul>
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <strong id="navName">DERRY ARTHA KHARISMA</strong><br/>
+          <span>minimal · calm · elegan</span>
         </div>
+      </div>
+
+      <div class="links">
+        <a href="#about">Tentang</a>
+        <a href="#projects">Proyek</a>
+        <a href="#skills">Skill</a>
+        <a href="#contact">Kontak</a>
+        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">🌓 Tema</button>
+      </div>
     </div>
-</nav>
+  </div>
 
-<!-- HERO -->
-<header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-        <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="avatar" />
-        <h1 class="masthead-heading text-uppercase mb-0">DERRY ARTHA KHARISMA</h1>
-
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-
-        <p class="masthead-subheading font-weight-light mb-0">
-            Deep Learning • IoT • Web Portfolio
+  <main class="wrap">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card">
+        <span class="kicker">👋 Halo, saya <b id="heroName" style="color:var(--text)">Derry</b></span>
+        <h1>Build project yang rapi,<br/>mulai dari ide sampai jadi.</h1>
+        <p class="lead">
+          Saya <b>DERRY ARTHA KHARISMA</b> (panggilan <b>Derry/Artha</b>).
+          Fokus: <b>Deep Learning</b>, <b>IoT</b>, dan <b>Web App</b>.
+          Saya suka membuat sistem end-to-end: perancangan, implementasi, evaluasi, sampai dokumentasi.
         </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#projects">🚀 Lihat Proyek</a>
+          <a class="btn" href="#contact">✉️ Hubungi</a>
+          <a class="btn" id="btnGithub" href="https://github.com/drryartha" target="_blank" rel="noreferrer">🐙 GitHub</a>
+        </div>
+
+        <div class="pillrow" style="margin-top:14px">
+          <span class="pill">📍 Pekanbaru, Indonesia</span>
+          <span class="pill copy" id="copyEmail" title="Klik untuk copy email">📧 <span id="emailText">derryartha87@gmail.com</span></span>
+          <span class="pill">🧩 Deep Learning · IoT · Web</span>
+        </div>
+      </div>
+
+      <div class="mini">
+        <div class="profilebox">
+          <div class="profile-top">
+            <div class="avatar" aria-hidden="true">DA</div>
+            <div>
+              <h3 id="cardName">DERRY ARTHA KHARISMA</h3>
+              <p>Informatics Engineering · Portfolio</p>
+            </div>
+          </div>
+
+          <div class="pillrow">
+            <span class="pill">⚡ Cepat & ringan</span>
+            <span class="pill">📱 Responsive</span>
+            <span class="pill">🌓 Dark/Light</span>
+          </div>
+
+          <div style="margin-top:12px; color:var(--muted); font-size:13px" id="about">
+            Saya nyaman bekerja dengan pipeline yang jelas: data → model/sensor → evaluasi → deployment → dokumentasi.
+            Target saya: hasil yang bisa dipakai dan bisa dipertanggungjawabkan.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title" style="margin:0 0 10px">
+            <h2>Highlight</h2>
+            <p>ringkas tapi “berisi”</p>
+          </div>
+          <div class="tags">
+            <span class="tag">TensorFlow/Keras</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">ESP32</span>
+            <span class="tag">Telegram Bot</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">GitHub</span>
+          </div>
+        </div>
+      </div>
     </div>
-</header>
 
-<!-- PORTFOLIO -->
-<section class="page-section portfolio" id="portfolio">
-    <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-            Portfolio
-        </h2>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title">
+        <div>
+          <h2>Proyek</h2>
+          <p>3 project yang merepresentasikan fokus utama saya</p>
+        </div>
+        <span class="kicker">⭐ Selected</span>
+      </div>
 
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
+      <div class="grid">
+        <article class="card item">
+          <h3>🧠 MRI Tumor Classification (Deep Learning)</h3>
+          <p>
+            Klasifikasi 4 kelas tumor otak dari citra MRI memakai CNN & transfer learning,
+            dengan evaluasi performa (confusion matrix, ROC, report) dan rencana deployment web.
+          </p>
+          <div class="tags">
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Transfer Learning</span>
+            <span class="tag">XAI (Grad-CAM)</span>
+          </div>
+          <div class="cta" style="margin-top:12px">
+            <a class="btn" href="https://github.com/drryartha" target="_blank" rel="noreferrer">📦 Repo</a>
+            <a class="btn" href="#contact">🔗 Demo (isi nanti)</a>
+          </div>
+        </article>
+
+        <article class="card item">
+          <h3>🔥 IoT Gas Leak Detection (ESP32 + MQ-2)</h3>
+          <p>
+            Sistem pendeteksi kebocoran gas: pembacaan sensor, status normal/siaga/bahaya,
+            alarm, LCD, serta notifikasi real-time via Telegram.
+          </p>
+          <div class="tags">
+            <span class="tag">ESP32</span>
+            <span class="tag">MQ-2</span>
+            <span class="tag">IoT Alerting</span>
+          </div>
+          <div class="cta" style="margin-top:12px">
+            <a class="btn" href="https://github.com/drryartha" target="_blank" rel="noreferrer">📦 Repo</a>
+            <a class="btn" href="#contact">📄 Dokumentasi (isi nanti)</a>
+          </div>
+        </article>
+
+        <article class="card item">
+          <h3>🌿 AIoT Agriculture Monitoring (SLR)</h3>
+          <p>
+            Kajian sistematis AIoT untuk monitoring lingkungan pertanian: pemetaan variabel (tanah/udara/air),
+            metode ML yang dominan, dan gap untuk pengembangan sistem yang lebih adaptif.
+          </p>
+          <div class="tags">
+            <span class="tag">PRISMA</span>
+            <span class="tag">Kitchenham SLR</span>
+            <span class="tag">AIoT</span>
+          </div>
+          <div class="cta" style="margin-top:12px">
+            <a class="btn" href="#contact">📄 Ringkasan (isi nanti)</a>
+            <a class="btn" href="#contact">🖥️ Slide (isi nanti)</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title">
+        <div>
+          <h2>Skill</h2>
+          <p>fokus teknis + workflow yang biasa dipakai</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card">
+          <h3 style="margin:0 0 8px">Teknis</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">TensorFlow/Keras</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Data Preprocessing</span>
+            <span class="tag">HTML/CSS/JS</span>
+            <span class="tag">Streamlit</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 8px">IoT & Tools</h3>
+          <div class="tags">
+            <span class="tag">ESP32 / Arduino</span>
+            <span class="tag">Sensor & Actuator</span>
+            <span class="tag">Telegram Bot</span>
+            <span class="tag">Git/GitHub</span>
+            <span class="tag">Colab/Kaggle</span>
+            <span class="tag">Docs & Report</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title">
+        <div>
+          <h2>Kontak</h2>
+          <p>tanpa backend — tombol kirim membuka email default</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card">
+          <label style="font-size:12px;color:var(--muted)">Nama</label>
+          <input class="input" id="cName" value="Derry Artha Kharisma" />
+          <div style="height:10px"></div>
+
+          <label style="font-size:12px;color:var(--muted)">Subjek</label>
+          <input class="input" id="cSubject" placeholder="Misal: Kolaborasi / Tanya project" />
+          <div style="height:10px"></div>
+
+          <label style="font-size:12px;color:var(--muted)">Pesan</label>
+          <textarea id="cMsg" placeholder="Tulis pesan kamu..."></textarea>
+
+          <div class="cta" style="margin-top:12px">
+            <button class="btn primary" type="button" id="sendBtn">📨 Kirim Email</button>
+            <button class="btn" type="button" id="copyBtn">📋 Copy Template</button>
+          </div>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="card">
+          <div class="section-title" style="margin:0 0 10px">
+            <h2>Info</h2>
+            <p>link cepat</p>
+          </div>
 
-            <!-- PROJECT 1 -->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="" />
-                </div>
-            </div>
+          <div class="pillrow">
+            <a class="pill" href="https://github.com/drryartha" target="_blank" rel="noreferrer">🐙 GitHub · drryartha</a>
+            <span class="pill">📧 <span id="emailMirror">derryartha87@gmail.com</span></span>
+          </div>
 
-            <!-- PROJECT 2 -->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="" />
-                </div>
-            </div>
+          <div style="margin-top:12px; color:var(--muted); font-size:13px">
+            Mau saya rapikan jadi makin “portfolio ready”? Tambahkan:
+            <b>foto</b>, <b>1 link demo</b> (HuggingFace/Streamlit), dan <b>1 CV PDF</b> lalu taruh di tombol.
+          </div>
 
-            <!-- PROJECT 3 -->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="" />
-                </div>
-            </div>
-
+          <div style="margin-top:12px; color:var(--muted); font-size:13px">
+            Hosting yang paling gampang: <b>GitHub Pages</b> (gratis). Upload file ini → aktifkan Pages → jadi URL portfolio kamu.
+          </div>
         </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> DERRY ARTHA KHARISMA · Derry/Artha</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <span class="pill">calm palette</span>
+        <span class="pill">minimal tapi berisi</span>
+      </div>
     </div>
-</section>
+  </main>
 
-<!-- ABOUT -->
-<section class="page-section bg-primary text-white mb-0" id="about">
-    <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-white">About Me</h2>
+  <script>
+    // ===== Basic config =====
+    const PROFILE = {
+      fullName: "DERRY ARTHA KHARISMA",
+      shortName: "Derry", // ganti ke "Artha" kalau mau default panggilan Artha
+      email: "derryartha87@gmail.com",
+      github: "https://github.com/drryartha",
+    };
 
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
+    // Apply
+    document.getElementById("navName").textContent = PROFILE.fullName;
+    document.getElementById("heroName").textContent = PROFILE.shortName;
+    document.getElementById("emailText").textContent = PROFILE.email;
+    document.getElementById("emailMirror").textContent = PROFILE.email;
 
-        <div class="row">
-            <div class="col-lg-4 ms-auto">
-                <p class="lead">
-                    Saya adalah mahasiswa Teknik Informatika dengan minat pada pengembangan sistem
-                    berbasis Deep Learning, Internet of Things (IoT), dan aplikasi web.
-                </p>
-            </div>
-            <div class="col-lg-4 me-auto">
-                <p class="lead">
-                    Terbiasa mengerjakan project end-to-end mulai dari perancangan,
-                    implementasi, evaluasi, hingga dokumentasi teknis yang rapi dan terukur.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<!-- CONTACT -->
-<section class="page-section" id="contact">
-    <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-            Contact
-        </h2>
+    // Theme toggle
+    const root = document.documentElement;
+    const saved = localStorage.getItem("theme");
+    if(saved === "light") root.classList.add("light");
 
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      root.classList.toggle("light");
+      localStorage.setItem("theme", root.classList.contains("light") ? "light" : "dark");
+    });
 
-        <div class="text-center">
-            <p class="lead">
-                📧 <strong>derryartha87@gmail.com</strong><br>
-                🐙 <a href="https://github.com/drryartha" target="_blank">
-                github.com/drryartha</a>
-            </p>
-        </div>
-    </div>
-</section>
+    // Copy email
+    document.getElementById("copyEmail").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(PROFILE.email);
+        const el = document.getElementById("copyEmail");
+        const old = el.innerHTML;
+        el.textContent = "✅ Email tercopy";
+        setTimeout(()=> el.innerHTML = old, 1200);
+      }catch(e){
+        alert("Gagal copy. Silakan blok manual: " + PROFILE.email);
+      }
+    });
 
-<!-- FOOTER -->
-<footer class="footer text-center">
-    <div class="container">
-        <small>© 2026 DERRY ARTHA KHARISMA</small>
-    </div>
-</footer>
+    // Contact actions (mailto)
+    function buildTemplate(){
+      const name = document.getElementById("cName").value.trim();
+      const subject = document.getElementById("cSubject").value.trim() || "Halo";
+      const msg = document.getElementById("cMsg").value.trim();
 
-<!-- MODALS -->
+      const body =
+`Halo ${PROFILE.shortName},
 
-<!-- MODAL 1 -->
-<div class="portfolio-modal modal fade" id="portfolioModal1">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body text-center pb-5">
-                <h2 class="text-secondary text-uppercase mb-0">MRI Brain Tumor Classification</h2>
-                <p class="mb-4">
-                    Klasifikasi tumor otak dari citra MRI menggunakan CNN dan transfer learning,
-                    dievaluasi dengan confusion matrix dan ROC.
-                </p>
-                <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+Saya ${name}.
+${msg ? "\n" + msg + "\n" : "\nSaya ingin menghubungi terkait...\n"}
 
-<!-- MODAL 2 -->
-<div class="portfolio-modal modal fade" id="portfolioModal2">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body text-center pb-5">
-                <h2 class="text-secondary text-uppercase mb-0">IoT Gas Leak Detection</h2>
-                <p class="mb-4">
-                    Sistem pendeteksi kebocoran gas berbasis ESP32 dan sensor MQ-2
-                    dengan alarm dan notifikasi Telegram.
-                </p>
-                <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+Terima kasih.`;
 
-<!-- MODAL 3 -->
-<div class="portfolio-modal modal fade" id="portfolioModal3">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body text-center pb-5">
-                <h2 class="text-secondary text-uppercase mb-0">AIoT Agriculture Monitoring</h2>
-                <p class="mb-4">
-                    Kajian dan perancangan sistem AIoT untuk monitoring lingkungan pertanian
-                    berbasis Systematic Literature Review (SLR).
-                </p>
-                <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+      return { subject, body };
+    }
 
-<!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/scripts.js"></script>
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const {subject, body} = buildTemplate();
+      const url = `mailto:${encodeURIComponent(PROFILE.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = url;
+    });
 
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const {subject, body} = buildTemplate();
+      const text = `Subject: ${subject}\n\n${body}`;
+      try{
+        await navigator.clipboard.writeText(text);
+        const btn = document.getElementById("copyBtn");
+        const old = btn.textContent;
+        btn.textContent = "✅ Tercopy";
+        setTimeout(()=> btn.textContent = old, 1200);
+      }catch(e){
+        alert("Gagal copy template.");
+      }
+    });
+  </script>
 </body>
 </html>
